@@ -7,4 +7,4 @@ from APP_BLOG.models import Post
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     class Media:
-        js = ('APP_BLOG/js/tinymce.js',)
+        js = ("APP_BLOG/js/tinymce.js",)
