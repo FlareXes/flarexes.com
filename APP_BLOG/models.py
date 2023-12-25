@@ -5,7 +5,7 @@ from taggit.managers import TaggableManager
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
-    thumbnail = models.ImageField(blank=True, null=True)
+    thumbnail = models.ImageField(blank=True, null=True, upload_to="thumbnail")
     content = models.TextField()                                # this has to be `content` variable
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)

@@ -13,3 +13,9 @@ def post(request, slug):
         'post': Post.objects.get(slug=slug),
     }
     return render(request, 'APP_BLOG/post.html', context)
+
+def blog(request):
+    context = {
+        'blog': Post.objects.all(),
+    }
+    return render(request, 'APP_BLOG/blog.html', context)
