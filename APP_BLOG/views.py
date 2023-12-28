@@ -2,11 +2,17 @@
 from django.shortcuts import render
 
 from APP_BLOG.models import Post
+from taggit.models import Tag
 
 
 def index(request):
     return render(request, "APP_BLOG/index.html")
 
+def blog(request):
+    context = {
+        'blog': Post.objects.all(),
+    }
+    return render(request, 'APP_BLOG/blog.html', context)
 
 def post(request, slug):
     context = {
@@ -14,8 +20,8 @@ def post(request, slug):
     }
     return render(request, 'APP_BLOG/post.html', context)
 
-def blog(request):
+def tag(request, tag):
     context = {
-        'blog': Post.objects.all(),
+        'posts': Post.objects.filter(tags__name__in=[tag]),
     }
-    return render(request, 'APP_BLOG/blog.html', context)
+    return render(request, 'APP_BLOG/tag.html', context)
